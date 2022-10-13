@@ -25,14 +25,15 @@ function SearchForm() {
   };
 
   const creatureSearch = () => {
-    const target = searchState.toLowerCase();
+    const query = searchState;
     console.log(searchState);
-    const fetchUrl = `https://api.open5e.com/monsters/?name=${target}`
+    const fetchUrl = `https://api.open5e.com/monsters/?name=${query}`
     console.log(fetchUrl);
 
     fetch(fetchUrl)
       .then(res => res.json())
       .then(data => {
+        data = data.results[0];
         setResultsData(data);
         console.log(data);
       });
