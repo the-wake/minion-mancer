@@ -8,13 +8,14 @@ function Homepage() {
 
   const [searchState, setSearchState] = useState('');
   const [resultsData, setResultsData] = useState('');
+  const [cardsData, setCardsData] = useState([]);
 
   return (
     <main>
       <div className='grid grid-cols-10'>
-        <Toolbar searchState={searchState} setSearchState={setSearchState} resultsData={resultsData} setResultsData={setResultsData}/>
+        <Toolbar searchState={searchState} setSearchState={setSearchState} resultsData={resultsData} setResultsData={setResultsData} setCardData={setCardsData}/>
         <div className='col-span-8 main-content'>
-          <CardLayout />
+          <CardLayout cardsData={cardsData} setCardsData={setCardsData}/>
         </div>
       </div>
     </main>

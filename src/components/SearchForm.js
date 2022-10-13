@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Card from './Card.js';
+
 
 function SearchForm({ searchState, setSearchState, resultsData, setResultsData }) {
 
@@ -21,12 +23,23 @@ function SearchForm({ searchState, setSearchState, resultsData, setResultsData }
         if (data) {
           setResultsData(data);
           console.log(data);
+        } else {
+          // TODO: Better error handling.
+          setResultsData(null);
+          console.log('No creature with that name found.');
         };
       })
       .catch(err => console.log(err));
   };
 
+  const addHandler = () => {
+    console.log('Addition handled.');
+  };
+
+  let searchCard;
+
   return (
+
     <div>
       <div className="w-full">
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onChange={changeHandler} onSubmit={submitHandler}>
@@ -53,13 +66,19 @@ function SearchForm({ searchState, setSearchState, resultsData, setResultsData }
           </div>
         </form>
       </div>
-      {/* Spot to render the current search */}
+      {searchCard}
       {
-        resultsData ? 'Data goes here' : 'No data to put here'
+        resultsData
+          ? <>
+            <Card creatureData={resultsData} />
+            <div className="px-6 pt-4 pb-2">
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full" type="button" onClick={addHandler}>
+                Add Creature
+              </button>
+            </div>
+          </>
+          : null
       }
-      <div>
-
-      </div>
       <p className="text-center text-gray-500 text-xs">
         &copy;2022 Ben Martin.
       </p>
