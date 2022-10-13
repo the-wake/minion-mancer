@@ -45,3 +45,11 @@ main {
 .main-content{
   min-height: 650px;
 }
+
+#card-area {
+  min-height: 100%;
+  margin: 0 12px;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+}
