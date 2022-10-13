@@ -37,3 +37,11 @@
     transform: rotate(360deg);
   }
 }
+
+main {
+  padding-top: 10px;
+}
+
+.main-content{
+  min-height: 650px;
+}
