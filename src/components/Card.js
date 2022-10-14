@@ -18,16 +18,27 @@ function Card({ creatureData }) {
         <p className="text-center text-gray-500 text-xs">
           {creatureData.size} {creatureData.type}{creatureData.alignment ? `, ${creatureData.alignment}` : null}
         </p>
-        <div className="top-stat-main grid grid-cols-4 gap-3 content-around justify-evenly">
+        <div className="top-stat-main grid grid-cols-4 gap-x-3 grid-rows-2 content-around justify-evenly">
           <div className="top-stat-block">
             <p className="font-bold text-3xl text-red-800">{creatureData.armor_class}</p>
-            <div className="top-stat-footer text-sm mt-1">
-              {creatureData.armor_desc}
-            </div>
+          </div>
+          <div className="top-stat-block">
+            <p className="font-bold text-3xl text-red-800">{creatureData.hit_points}</p>
           </div>
           <div className="top-stat-block">Text</div>
           <div className="top-stat-block">Text</div>
-          <div className="top-stat-block">Text</div>
+          <div className="top-stat-footer text-sm mt-0">
+            <span className="text-span">{creatureData.armor_desc}</span>
+          </div>
+          <div className="top-stat-footer text-sm mt-0">
+            Initiative
+          </div>
+          <div className="top-stat-footer text-sm mt-0">
+            {creatureData.armor_desc}
+          </div>
+          <div className="top-stat-footer text-sm mt-0">
+            {creatureData.armor_desc}
+          </div>
         </div>
         <div className="asm-container grid grid-cols-3 gap-4 content-around justify-evenly">
           <div className="asm-block">

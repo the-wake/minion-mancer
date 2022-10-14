@@ -29,9 +29,12 @@
 }
 
 .top-stat-footer {
+  display: table-cell;
+  vertical-align: middle;
+  font-weight: bold;
   border-color: black;
   border-style: solid;
-  border-top-width: 1px;
+  border-width: 0 1px 1px 1px;
 }
 
 .asm-block {
@@ -48,4 +51,8 @@
   width: 90%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.text-span {
+  height: 100%;
 }
