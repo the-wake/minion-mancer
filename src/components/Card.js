@@ -7,11 +7,55 @@ function Card({ creatureData }) {
 
   // TODO: Might want to put in more data sanitizing (caps, etc.).
 
+  // const abilityScores = [
+  //   {
+  //     name: 'Strength',
+  //     slug: 'strength',
+  //     abbrev: 'str'
+  //   },
+  //   {
+  //     name: 'Dexterity',
+  //     slug: 'dexterity',
+  //     abbrev: 'dex'
+  //   },
+  //   {
+  //     name: 'Constitution',
+  //     slug: 'constitution',
+  //     abbrev: 'con'
+  //   },
+  //   {
+  //     name: 'Intelligence',
+  //     slug: 'intelligence',
+  //     abbrev: 'int'
+  //   },
+  //   {
+  //     name: 'Wisdom',
+  //     slug: 'wisdom',
+  //     abbrev: 'wis'
+  //   },
+  //   {
+  //     name: 'Charisma',
+  //     slug: 'charisma',
+  //     abbrev: 'cha'
+  //   },
+  // ];
+
+  const abilityScores = {
+    strength: creatureData.strength,
+    dexterity: creatureData.dexterity,
+    constitution: creatureData.constitution,
+    intelligence: creatureData.intelligence,
+    wisdom: creatureData.wisdom,
+    charisma: creatureData.charisma,
+  };
+
+  
+
   if (!creatureData.perception) {
     if (creatureData.wisdom % 2 === 0) {
-      creatureData.perception = creatureData.perception = (creatureData.wisdom - 10) / 2;
+      creatureData.perception = creatureData.perception = ((creatureData.wisdom - 10) / 2) + 10;
     } else {
-      creatureData.perception = creatureData.perception = (creatureData.wisdom - 10) / 2 - .5;
+      creatureData.perception = creatureData.perception = ((creatureData.wisdom - 10) / 2 - .5) + 10;
     }
   };
 
@@ -34,12 +78,12 @@ function Card({ creatureData }) {
           </div>
         </div>
         // Doesn't have handing for >3 speeds, but I don't think anything has that.
-    } else {
+      } else {
         return <div>
           <div className="three-speed top-stat-block flex flex-col justify-center content-center ">
             <p><span className="font-bold text-red-800">{Object.values(speeds)[0]}</span> <span>{Object.keys(speeds)[0].charAt(0).toUpperCase() + Object.keys(speeds)[0].slice(1)}</span><br />
-            <span className="font-bold text-red-800">{Object.values(speeds)[1]}</span> <span>{Object.keys(speeds)[1].charAt(0).toUpperCase() + Object.keys(speeds)[1].slice(1)}</span><br />
-            <span className="font-bold text-red-800">{Object.values(speeds)[2]}</span> <span>{Object.keys(speeds)[2].charAt(0).toUpperCase() + Object.keys(speeds)[2].slice(1)}</span></p>
+              <span className="font-bold text-red-800">{Object.values(speeds)[1]}</span> <span>{Object.keys(speeds)[1].charAt(0).toUpperCase() + Object.keys(speeds)[1].slice(1)}</span><br />
+              <span className="font-bold text-red-800">{Object.values(speeds)[2]}</span> <span>{Object.keys(speeds)[2].charAt(0).toUpperCase() + Object.keys(speeds)[2].slice(1)}</span></p>
           </div>
         </div>
       };
