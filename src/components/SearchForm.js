@@ -13,13 +13,12 @@ function SearchForm({ searchState, setSearchState, resultsData, setResultsData }
 
   const submitHandler = e => {
     e.preventDefault();
-    const query = searchState;
-    const fetchUrl = `https://api.open5e.com/monsters/?name=${query}`
+    const query = searchState.toLowerCase();
+    const fetchUrl = `https://api.open5e.com/monsters/${query}`
 
     fetch(fetchUrl)
       .then(res => res.json())
       .then(data => {
-        data = data.results[0]
         if (data) {
           setResultsData(data);
           console.log(data);

@@ -27,17 +27,17 @@ function Card({ creatureData }) {
           </div>
           <div className="top-stat-block">Text</div>
           <div className="top-stat-block">Text</div>
-          <div className="top-stat-footer text-sm mt-0">
+          <div className="top-stat-footer top-stat-footer-xs mt-0">
             <span className="text-span">{creatureData.armor_desc}</span>
           </div>
-          <div className="top-stat-footer text-sm mt-0">
-            Initiative
+          <div className="top-stat-footer mt-0">
+            Hit Points
           </div>
-          <div className="top-stat-footer text-sm mt-0">
-            {creatureData.armor_desc}
+          <div className="top-stat-footer top-stat-footer-xs mt-0">
+            Passive Perception
           </div>
-          <div className="top-stat-footer text-sm mt-0">
-            {creatureData.armor_desc}
+          <div className="top-stat-footer mt-0">
+            {creatureData.name}
           </div>
         </div>
         <div className="asm-container grid grid-cols-3 gap-4 content-around justify-evenly">

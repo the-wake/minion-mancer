@@ -29,12 +29,17 @@
 }
 
 .top-stat-footer {
+  font-size: 12px;
   display: table-cell;
   vertical-align: middle;
   font-weight: bold;
   border-color: black;
   border-style: solid;
   border-width: 0 1px 1px 1px;
+}
+
+.top-stat-footer-xs {
+  font-size: 9px;
 }
 
 .asm-block {
