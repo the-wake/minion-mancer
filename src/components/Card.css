@@ -45,10 +45,6 @@
   border-top-width: 1px;
 }
 
-.top-stat-footer-xs {
-  font-size: 9px;
-}
-
 .asm-block {
   border-color: black;
   border-style: solid;
@@ -68,4 +64,13 @@
 .text-span {
   margin-top: 10px;
   margin-bottom: auto;
+}
+
+.xxs-text {
+  font-size: 9px;
+}
+
+.three-speed {
+  font-size: 13px;
+  line-height: 19px;
 }

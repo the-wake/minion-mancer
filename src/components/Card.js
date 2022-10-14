@@ -5,28 +5,57 @@ import './Card.css';
 
 function Card({ creatureData }) {
 
-  // TODO: Might want to put in something to sanitize the data (caps, etc.).
+  // TODO: Might want to put in more data sanitizing (caps, etc.).
 
   if (!creatureData.perception) {
     if (creatureData.wisdom % 2 === 0) {
       creatureData.perception = creatureData.perception = (creatureData.wisdom - 10) / 2;
     } else {
       creatureData.perception = creatureData.perception = (creatureData.wisdom - 10) / 2 - .5;
-      console.log(`Rounding down to ${creatureData.perception}.`);
     }
   };
 
   const moveAssist = () => {
-    if (Object.keys(creatureData.speed).length === 1) {
+    // const speeds = {walk: 10, fly: 20, swim: 30};
+    const speeds = creatureData.speed;
+    if (Object.keys(speeds).length === 1) {
       return <div>
         <div className="top-stat-block flex flex-col justify-center content-center">
-          <p className="font-bold text-xl text-red-800">{creatureData.speed.walk}</p>
-          <p className="text-sm">Walk</p>
+          <p className="font-bold text-xl text-red-800">{Object.values(speeds)[0]}</p>
+          <p className="text-sm">{Object.keys(speeds)[0].charAt(0).toUpperCase() + Object.keys(speeds)[0].slice(1)}</p>
         </div>
       </div>
+    } else
+      if (Object.keys(speeds).length === 2) {
+        return <div>
+          <div className="top-stat-block flex flex-col justify-center content-center">
+            <p><span className="font-bold text-xl text-red-800">{Object.values(speeds)[0]}</span> <span className="text-sm">{Object.keys(speeds)[0].charAt(0).toUpperCase() + Object.keys(speeds)[0].slice(1)}</span></p>
+            <p><span className="font-bold text-xl text-red-800">{Object.values(speeds)[1]}</span> <span className="text-sm">{Object.keys(speeds)[1].charAt(0).toUpperCase() + Object.keys(speeds)[1].slice(1)}</span></p>
+          </div>
+        </div>
+        // Doesn't have handing for >3 speeds, but I don't think anything has that.
     } else {
-      return <div>Dogs and cats living together!</div>
-    };
+        return <div>
+          <div className="three-speed top-stat-block flex flex-col justify-center content-center ">
+            <p><span className="font-bold text-red-800">{Object.values(speeds)[0]}</span> <span>{Object.keys(speeds)[0].charAt(0).toUpperCase() + Object.keys(speeds)[0].slice(1)}</span><br />
+            <span className="font-bold text-red-800">{Object.values(speeds)[1]}</span> <span>{Object.keys(speeds)[1].charAt(0).toUpperCase() + Object.keys(speeds)[1].slice(1)}</span><br />
+            <span className="font-bold text-red-800">{Object.values(speeds)[2]}</span> <span>{Object.keys(speeds)[2].charAt(0).toUpperCase() + Object.keys(speeds)[2].slice(1)}</span></p>
+          </div>
+        </div>
+      };
+
+
+    // const speeds = creatureData.speed;
+    // console.log(speeds);
+    // for (const movement in speeds) {
+    //   console.log(speeds[movement], movement)
+    //   return <div>
+    //     <div className="top-stat-block flex flex-col justify-center content-center">
+    //       <p className="font-bold text-xl text-red-800">{speeds[movement]}</p>
+    //       <p className="text-sm">{movement.charAt(0).toUpperCase() + movement.slice(1)}</p>
+    //     </div>
+    //   </div>
+    // };
   };
 
   const moveValue = moveAssist();
@@ -45,15 +74,15 @@ function Card({ creatureData }) {
         <div className="top-stat-main grid grid-cols-4 gap-x-3 content-around justify-between">
           <div className="top-stat-block flex flex-col justify-center content-center">
             <p className="font-bold text-xl text-red-800">AC {creatureData.armor_class}</p>
-            <p className="top-stat-footer top-stat-footer-xs mt-0 flex justify-center items-center text-center content-center">{creatureData.armor_desc}</p>
+            <p className="top-stat-footer xxs-text mt-0 flex justify-center items-center text-center content-center">{creatureData.armor_desc}</p>
           </div>
           <div className="top-stat-block flex flex-col justify-center content-center">
             <p className="font-bold text-xl text-red-800">{creatureData.hit_points} HP</p>
-            <p className="top-stat-footer top-stat-footer-xs mt-0 w-full">{creatureData.hit_dice}<br />Hit Dice</p>
+            <p className="top-stat-footer xxs-text mt-0 w-full">{creatureData.hit_dice}<br />Hit Dice</p>
           </div>
           <div className="top-stat-block flex flex-col justify-center content-center">
             <p className="font-bold text-xl text-red-800">{creatureData.perception}</p>
-            <p className="top-stat-footer top-stat-footer-xs mt-0 w-full">Passive <br /> Perception</p>
+            <p className="top-stat-footer xxs-text mt-0 w-full">Passive <br /> Perception</p>
           </div>
           {moveValue}
         </div>
