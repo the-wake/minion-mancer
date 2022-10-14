@@ -13,13 +13,12 @@ function SearchForm({ searchState, setSearchState, resultsData, setResultsData }
 
   const submitHandler = e => {
     e.preventDefault();
-    const query = searchState;
-    const fetchUrl = `https://api.open5e.com/monsters/?name=${query}`
+    const query = searchState.toLowerCase();
+    const fetchUrl = `https://api.open5e.com/monsters/${query}`
 
     fetch(fetchUrl)
       .then(res => res.json())
       .then(data => {
-        data = data.results[0]
         if (data) {
           setResultsData(data);
           console.log(data);
@@ -66,17 +65,16 @@ function SearchForm({ searchState, setSearchState, resultsData, setResultsData }
           </div>
         </form>
       </div>
-      {searchCard}
       {
         resultsData
-          ? <>
+          ? <div className='search-card-container'>
             <Card creatureData={resultsData} />
             <div className="px-6 pt-4 pb-2">
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full" type="button" onClick={addHandler}>
                 Add Creature
               </button>
             </div>
-          </>
+          </div>
           : null
       }
       <p className="text-center text-gray-500 text-xs">
