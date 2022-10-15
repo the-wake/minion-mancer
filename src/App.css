@@ -48,7 +48,7 @@ main {
 }
 
 #card-area {
-  min-height: 100%;
+  min-height: 920px;
   margin: 0 12px;
   border-color: black;
   border-style: solid;
