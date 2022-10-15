@@ -38,14 +38,14 @@ function Card({ creatureData }) {
   //   },
   // ];
 
-  const abilityScores = {
-    strength: creatureData.strength,
-    dexterity: creatureData.dexterity,
-    constitution: creatureData.constitution,
-    intelligence: creatureData.intelligence,
-    wisdom: creatureData.wisdom,
-    charisma: creatureData.charisma,
-  };
+  // const abilityScores = {
+  //   strength: creatureData.strength,
+  //   dexterity: creatureData.dexterity,
+  //   constitution: creatureData.constitution,
+  //   intelligence: creatureData.intelligence,
+  //   wisdom: creatureData.wisdom,
+  //   charisma: creatureData.charisma,
+  // };
 
   const getASM = (ability) => {
     if (creatureData[ability] % 2 === 0) {
@@ -71,35 +71,29 @@ function Card({ creatureData }) {
       </div>
     } else
       if (Object.keys(speeds).length === 2) {
-        return <div>
-        <div className="top-stat-block flex flex-col justify-center content-center grid grid-rows-2 grid-cols-5">
+        return <div className="top-stat-block flex flex-col justify-center content-center grid grid-rows-2 grid-cols-5">
           <span className="font-bold text-red-800 col-span-2">{Object.values(speeds)[0]}</span> <span className="col-span-3">{Object.keys(speeds)[0].charAt(0).toUpperCase() + Object.keys(speeds)[0].slice(1)}</span>
           <span className="font-bold text-red-800 col-span-2">{Object.values(speeds)[1]}</span> <span className="col-span-3">{Object.keys(speeds)[1].charAt(0).toUpperCase() + Object.keys(speeds)[1].slice(1)}</span>
         </div>
-      </div>
         // Doesn't have handing for >3 speeds, but I don't think anything has that.
       } else {
-        return <div>
-          <div className="three-speed top-stat-block flex flex-col justify-center content-center grid grid-rows-3 grid-cols-5">
-            <span className="font-bold text-red-800 col-span-2">{Object.values(speeds)[0]}</span> <span className="col-span-3">{Object.keys(speeds)[0].charAt(0).toUpperCase() + Object.keys(speeds)[0].slice(1)}</span>
-            <span className="font-bold text-red-800 col-span-2">{Object.values(speeds)[1]}</span> <span className="col-span-3">{Object.keys(speeds)[1].charAt(0).toUpperCase() + Object.keys(speeds)[1].slice(1)}</span>
-            <span className="font-bold text-red-800 col-span-2">{Object.values(speeds)[2]}</span> <span className="col-span-3">{Object.keys(speeds)[2].charAt(0).toUpperCase() + Object.keys(speeds)[2].slice(1)}</span>
-          </div>
+        return <div className="three-speed top-stat-block flex flex-col justify-center content-center grid grid-rows-3 grid-cols-5">
+          <span className="font-bold text-red-800 col-span-2">{Object.values(speeds)[0]}</span> <span className="col-span-3">{Object.keys(speeds)[0].charAt(0).toUpperCase() + Object.keys(speeds)[0].slice(1)}</span>
+          <span className="font-bold text-red-800 col-span-2">{Object.values(speeds)[1]}</span> <span className="col-span-3">{Object.keys(speeds)[1].charAt(0).toUpperCase() + Object.keys(speeds)[1].slice(1)}</span>
+          <span className="font-bold text-red-800 col-span-2">{Object.values(speeds)[2]}</span> <span className="col-span-3">{Object.keys(speeds)[2].charAt(0).toUpperCase() + Object.keys(speeds)[2].slice(1)}</span>
         </div>
       };
+  };
 
+  const attacks = creatureData.actions.map((action) => {
+    return <div className="my-3 grid grid-cols-5 justify-between align-center">
+      <p className="font-bold">{action.name}</p>
+      <p className="col-span-4">{action.desc}</p>
+    </div>
+  });
 
-    // const speeds = creatureData.speed;
-    // console.log(speeds);
-    // for (const movement in speeds) {
-    //   console.log(speeds[movement], movement)
-    //   return <div>
-    //     <div className="top-stat-block flex flex-col justify-center content-center">
-    //       <p className="font-bold text-xl text-red-800">{speeds[movement]}</p>
-    //       <p className="text-sm">{movement.charAt(0).toUpperCase() + movement.slice(1)}</p>
-    //     </div>
-    //   </div>
-    // };
+  const setAttacks = () => {
+    // Stuff goes here
   };
 
   const moveValue = moveAssist();
@@ -133,50 +127,58 @@ function Card({ creatureData }) {
         <div className="asm-container mt-4 grid grid-cols-3 grid-rows-2 gap-x-4 gap-y-1 content-around justify-evenly">
           <div>
             <div className="asm-block">
-              <div className="font-bold text-3xl text-red-800">{creatureData.strength}</div>
+              <div className="font-bold text-xl text-red-800">{creatureData.strength}</div>
               <p>STR</p>
             </div>
             <span className="font-bold">Save: {creatureData.strength_save ? creatureData.strength_save : getASM('strength')}</span>
           </div>
           <div>
             <div className="asm-block">
-              <div className="font-bold text-3xl text-red-800">{creatureData.dexterity}</div>
+              <div className="font-bold text-xl text-red-800">{creatureData.dexterity}</div>
               <p>DEX</p>
             </div>
             <span className="font-bold">Save: {creatureData.dexterity_save ? creatureData.dexterity_save : getASM('dexterity')}</span>
           </div>
           <div>
             <div className="asm-block">
-              <div className="font-bold text-3xl text-red-800">{creatureData.constitution}</div>
+              <div className="font-bold text-xl text-red-800">{creatureData.constitution}</div>
               <p>CON</p>
             </div>
             <span className="font-bold">Save: {creatureData.constitution_save ? creatureData.constitution_save : getASM('constitution')}</span>
           </div>
           <div>
             <div className="asm-block">
-              <div className="font-bold text-3xl text-red-800">{creatureData.intelligence}</div>
+              <div className="font-bold text-xl text-red-800">{creatureData.intelligence}</div>
               <p>INT</p>
             </div>
             <span className="font-bold">Save: {creatureData.intelligence_save ? creatureData.intelligence_save : getASM('intelligence')}</span>
           </div>
           <div>
             <div className="asm-block">
-              <div className="font-bold text-3xl text-red-800">{creatureData.wisdom}</div>
+              <div className="font-bold text-xl text-red-800">{creatureData.wisdom}</div>
               <p>WIS</p>
             </div>
             <span className="font-bold">Save: {creatureData.wisdom_save ? creatureData.wisdom_save : getASM('wisdom')}</span>
           </div>
           <div>
             <div className="asm-block">
-              <div className="font-bold text-3xl text-red-800">{creatureData.charisma}</div>
+              <div className="font-bold text-xl text-red-800">{creatureData.charisma}</div>
               <p>CHA</p>
             </div>
             <span className="font-bold">Save: {creatureData.charisma_save ? creatureData.charisma_save : getASM('charisma')}</span>
           </div>
         </div>
-        <p className="text-gray-700 text-base mt-4">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-        </p>
+        <div className="mid-area mt-4">
+          <div className="sense-container">
+            {creatureData.senses}
+          </div>
+        </div>
+        {/* {attacks
+          ? <div className="attack-container text-gray-700 text-base mt-4">
+            {attacks}
+          </div>
+          : null
+        } */}
       </div>
     </div>
   );
